@@ -6,10 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionAgriculteur.CouleurSol;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.Commande;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.StatusPaiement;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionUser.User;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -27,5 +31,13 @@ public class Livraison  implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateLivraison;
     private StatusPaiement statusPaiement;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
+
+    @OneToMany(mappedBy = "livraison", orphanRemoval = true)
+    private Set<Commande> commandes ;
 
 }

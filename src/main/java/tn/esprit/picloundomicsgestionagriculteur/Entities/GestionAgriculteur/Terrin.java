@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.CategorieProduit;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.Produit;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionUser.User;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -30,10 +33,21 @@ public class Terrin implements Serializable {
     private TypeSol sol;
     private int FrequenceArrosage;
 
-    @ManyToOne
-    @JoinColumn(name = "produit_idproduit")
-    private Produit produit;
+
+
 
     @Temporal(TemporalType.DATE)
     private Date dateObtentionTerrin;
+
+    @ManyToOne
+    @JoinColumn(name = "type_sol_id_sol")
+    private TypeSol typeSol;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
+    @OneToMany(mappedBy = "terrin", orphanRemoval = true)
+    private Set<Produit> produits ;
+
 }

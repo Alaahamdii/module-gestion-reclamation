@@ -5,9 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionAgriculteur.Terrin;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionUser.User;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -35,5 +39,19 @@ public class Produit implements Serializable  {
    private  int qtitDechet;
     private int maxDechet;
 
+
+    @ManyToOne
+    @JoinColumn(name = "terrin_id_terrin")
+    private Terrin terrin;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
+    @ManyToMany
+    @JoinTable(name = "produit_commandes",
+            joinColumns = @JoinColumn(name = "produit_idproduit"),
+            inverseJoinColumns = @JoinColumn(name = "commandes_id_command"))
+    private Set<Commande> commandes;
 
 }

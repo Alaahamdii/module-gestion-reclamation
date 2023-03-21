@@ -31,7 +31,6 @@ public class Pesticide implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id_user")
-    User agriculeur;
+    private User user;
 
-    
 }

@@ -6,9 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionAgriculteur.Terrin;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionLivraison.Livraison;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.Commande;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.Produit;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionReclamation.Reclamation;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionTransformation.Equipe;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionTransformation.Pesticide;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,5 +42,27 @@ public class User implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToMany
-    private List<Pesticide> pesticides;}
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Pesticide> pesticides ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Equipe> equipes ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Livraison> livraisons ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Reclamation> reclamations ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Terrin> terrins ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Produit> produits ;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Commande> commandes ;
+
+}
+

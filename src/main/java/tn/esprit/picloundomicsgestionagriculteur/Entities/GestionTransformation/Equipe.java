@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionUser.User;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -35,5 +36,9 @@ public class Equipe implements Serializable {
         @Email
         private String email ;
 
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
+}
 

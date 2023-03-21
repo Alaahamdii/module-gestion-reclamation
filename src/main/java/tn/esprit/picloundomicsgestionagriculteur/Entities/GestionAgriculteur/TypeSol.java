@@ -9,6 +9,8 @@ import lombok.Setter;
 import tn.esprit.picloundomicsgestionagriculteur.Entities.GestionProduit.CategorieProduit;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @Entity
@@ -28,5 +30,8 @@ public class TypeSol implements Serializable {
     private float tauxMCarre;
     private float tauxadequat;
 
+
+    @OneToMany(mappedBy = "typeSol", orphanRemoval = true)
+    private Set<Terrin> terrins ;
 
 }
