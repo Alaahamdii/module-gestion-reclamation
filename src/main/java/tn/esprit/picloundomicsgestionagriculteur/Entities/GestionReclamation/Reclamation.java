@@ -21,7 +21,7 @@ import java.util.Set;
 public class Reclamation  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idReclamation;
+    private Long idReclamation;
 
     private String description;
     @Temporal(TemporalType.DATE)
