@@ -1,6 +1,6 @@
 package tn.esprit.picloundomicsgestionagriculteur.Entities.GestionReclamation;
 
 public enum statusRecl {
-        resolu ,nonResolu,enCours;
+        resolu ,nonResolu,enCours,INITIALE
     
 }
